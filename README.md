@@ -1,4 +1,9 @@
-# flutter_rename_app
+# flutter_rename_app_plus
+
+[![Pub](https://img.shields.io/pub/v/fk_user_agent.svg)](https://pub.dartlang.org/packages/flutter_rename_app_plus)
+[![Awesome Flutter](https://img.shields.io/badge/Awesome-Flutter-blue.svg?longCache=true&style=flat-square)]()
+[![Awesome Flutter](https://img.shields.io/badge/Platform-Android_iOS-blue.svg?longCache=true&style=flat-square)]()
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](/LICENSE)
 
 Rename Flutter applications in one command.
 
@@ -7,7 +12,7 @@ Rename Flutter applications in one command.
 ## Usage
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/ThomasEcalle/flutter_rename_app_plus/master/documentation/readme_gif.gif" width="700" height="350"/>
+<img src="https://raw.githubusercontent.com/flutter-fast-kit/flutter_rename_app_plus/master/documentation/readme_gif.gif" width="700" height="350"/>
 </p>
 
 ### Add dependency
@@ -16,13 +21,13 @@ Rename Flutter applications in one command.
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_rename_app:
+  flutter_rename_app_plus:
 ```
 
 ### Define Settings
 
 ```
-flutter_rename_app:
+flutter_rename_app_plus:
   application_name: Bank App
   dart_package_name: bank_app
   application_id: com.android.bank
@@ -47,5 +52,9 @@ Make sure that your current working directory is the project root.
 
 ```
 flutter pub get
-flutter pub run flutter_rename_app
+flutter pub run flutter_rename_app_plus
 ```
+
+### Credits 👍
+
+Forked of https://github.com/ThomasEcalle/flutter_rename_app
