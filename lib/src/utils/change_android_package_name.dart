@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:flutter_rename_app/src/models/config.dart';
-import 'package:flutter_rename_app/src/utils/logger.dart';
+import 'package:flutter_rename_app_plus/src/models/config.dart';
+import 'package:flutter_rename_app_plus/src/utils/logger.dart';
 
 /// Change the Android package name
 /// The idea is to crate the new package's directories
@@ -17,21 +17,17 @@ changeAndroidPackageName(Config config) async {
   final String oldPackagePath = oldPackageNameParts.join("/");
   final String newPackagePath = newPackageNameParts.join("/");
 
-  final Directory oldAndroidDirectory =
-      Directory("${workingDirectory.path}/$oldPackagePath");
-  final Directory newAndroidDirectory =
-      Directory("${workingDirectory.path}/$newPackagePath");
+  final Directory oldAndroidDirectory = Directory("${workingDirectory.path}/$oldPackagePath");
+  final Directory newAndroidDirectory = Directory("${workingDirectory.path}/$newPackagePath");
 
   newAndroidDirectory.createSync(recursive: true);
-  final List<FileSystemEntity> files =
-      oldAndroidDirectory.listSync(recursive: true);
+  final List<FileSystemEntity> files = oldAndroidDirectory.listSync(recursive: true);
 
   await Future.forEach(files, (FileSystemEntity fileSystemEntity) async {
     if (fileSystemEntity is File) {
       try {
         final String fileName = fileSystemEntity.path.split("/").last;
-        final File file = await fileSystemEntity
-            .copy("${newAndroidDirectory.path}/$fileName");
+        final File file = await fileSystemEntity.copy("${newAndroidDirectory.path}/$fileName");
         file.createSync(recursive: true);
       } catch (error) {
         Logger.error(error);
@@ -53,8 +49,7 @@ changeAndroidPackageName(Config config) async {
 /// Either it is a Kotlin or Java project
 Future<Directory> _getDirectory(List<String> oldPackageNameParts) async {
   final String packagePath = oldPackageNameParts.join("/");
-  final Directory javaDirectory =
-      Directory("android/app/src/main/java/$packagePath");
+  final Directory javaDirectory = Directory("android/app/src/main/java/$packagePath");
   if (javaDirectory.existsSync()) {
     return Directory("android/app/src/main/java");
   }

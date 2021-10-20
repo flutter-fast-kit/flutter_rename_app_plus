@@ -17,3 +17,8 @@
 ## [1.0.0] - 06/01/2020
 
 * First Release version
+
+## [1.1.0] - 20/10/2021
+
+* update dependencies
+* support UpperCase package name

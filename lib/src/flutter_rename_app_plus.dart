@@ -1,9 +1,9 @@
-library flutter_rename_app;
+library flutter_rename_app_plus;
 
 import 'dart:io';
 
-import 'package:flutter_rename_app/src/changes/files_to_modify_name.dart';
-import 'package:flutter_rename_app/src/utils/logger.dart';
+import 'package:flutter_rename_app_plus/src/changes/files_to_modify_name.dart';
+import 'package:flutter_rename_app_plus/src/utils/logger.dart';
 import 'package:process_run/shell_run.dart';
 
 import 'changes/files_to_modify_content.dart';
@@ -21,20 +21,17 @@ renameApp() async {
     bool requireChanges = false;
 
     if (config.oldAppName != config.newAppName) {
-      Logger.info(
-          "Need to change the application name from : ${config.oldAppName} to ${config.newAppName}");
+      Logger.info("Need to change the application name from : ${config.oldAppName} to ${config.newAppName}");
       requireChanges = true;
     }
 
     if (config.oldApplicationId != config.newApplicationId) {
-      Logger.info(
-          "Need to change the application id from : ${config.oldApplicationId} to ${config.newApplicationId}");
+      Logger.info("Need to change the application id from : ${config.oldApplicationId} to ${config.newApplicationId}");
       requireChanges = true;
     }
 
     if (config.oldBundleId != config.newBundleId) {
-      Logger.info(
-          "Need to change the bundle id from : ${config.oldBundleId} to ${config.newBundleId}");
+      Logger.info("Need to change the bundle id from : ${config.oldBundleId} to ${config.newBundleId}");
       requireChanges = true;
     }
 
@@ -125,10 +122,8 @@ _applyContentChanges(List<RequiredChange> requiredChanges) async {
       for (final path in change.paths) {
         if (change.isDirectory) {
           final Directory directory = Directory(path);
-          await Future.forEach(directory.listSync(recursive: true),
-              (FileSystemEntity entity) async {
-            await _changeContentInFile(
-                entity.path, change.regexp, change.replacement);
+          await Future.forEach(directory.listSync(recursive: true), (FileSystemEntity entity) async {
+            await _changeContentInFile(entity.path, change.regexp, change.replacement);
           });
         } else {
           await _changeContentInFile(path, change.regexp, change.replacement);

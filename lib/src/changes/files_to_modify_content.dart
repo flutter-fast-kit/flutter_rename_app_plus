@@ -1,5 +1,5 @@
-import 'package:flutter_rename_app/src/models/config.dart';
-import 'package:flutter_rename_app/src/models/required_change.dart';
+import 'package:flutter_rename_app_plus/src/models/config.dart';
+import 'package:flutter_rename_app_plus/src/models/required_change.dart';
 
 /// List of required changes of files content
 List<RequiredChange> getFilesToModifyContent(

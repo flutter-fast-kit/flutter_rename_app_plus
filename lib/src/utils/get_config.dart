@@ -1,13 +1,13 @@
 import 'dart:io';
 
-import 'package:flutter_rename_app/src/models/config.dart';
-import 'package:flutter_rename_app/src/models/errors.dart';
+import 'package:flutter_rename_app_plus/src/models/config.dart';
+import 'package:flutter_rename_app_plus/src/models/errors.dart';
 import 'package:yaml/yaml.dart';
 
 import 'utils.dart';
 
 /// The section id for flutter_rename_app in the yaml file
-const String yamlSectionId = 'flutter_rename_app';
+const String yamlSectionId = 'flutter_rename_app_plus';
 
 /// A class of arguments which the user can specify in pubspec.yaml
 class YamlArguments {
@@ -95,7 +95,7 @@ Future<String> _loadAndroidPackageName() async {
   try {
     return searchInFile(
       filePath: "android/app/src/main/AndroidManifest.xml",
-      pattern: 'package="([a-z_.]*)"',
+      pattern: 'package="([a-zA-Z0-9_.]*)"',
     );
   } catch (error) {
     print("Error reading Manifest : $error");
@@ -119,7 +119,7 @@ Future<String> _loadAndroidApplicationId() async {
   try {
     return searchInFile(
       filePath: "android/app/build.gradle",
-      pattern: 'applicationId "([a-z_.]*)"',
+      pattern: 'applicationId "([a-zA-Z0-9_.]*)"',
     );
   } catch (error) {
     print("Error reading build.gradle : $error");
@@ -131,7 +131,7 @@ Future<String> _loadBundleId() async {
   try {
     return searchInFile(
       filePath: "ios/Runner.xcodeproj/project.pbxproj",
-      pattern: 'PRODUCT_BUNDLE_IDENTIFIER = ([a-z_.]*)',
+      pattern: 'PRODUCT_BUNDLE_IDENTIFIER = ([a-zA-Z0-9_.]*)',
     );
   } catch (error) {
     print("Error reading Plist : $error");

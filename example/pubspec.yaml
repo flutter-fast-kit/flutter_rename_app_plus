@@ -27,10 +27,10 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_rename_app:
+  flutter_rename_app_plus:
     path: ../
 
-flutter_rename_app:
+flutter_rename_app_plus:
   application_name: Bank App
   dart_package_name: bank_app
   application_id: com.android.bank
