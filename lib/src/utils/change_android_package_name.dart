@@ -30,13 +30,13 @@ changeAndroidPackageName(Config config) async {
         final File file = await fileSystemEntity.copy("${newAndroidDirectory.path}/$fileName");
         file.createSync(recursive: true);
       } catch (error) {
-        Logger.error(error);
+        Logger.error(error.toString());
       }
     }
   });
 
   /// Deleting all inside old Android package
-  final Directory directoryToDelete = _getFirstDifferentDirectory(
+  final Directory? directoryToDelete = _getFirstDifferentDirectory(
     workingDirectory.path,
     oldPackageNameParts,
     newPackageNameParts,
@@ -59,7 +59,7 @@ Future<Directory> _getDirectory(List<String> oldPackageNameParts) async {
 
 /// Get the first directory that is different
 /// between old and new android package name
-Directory _getFirstDifferentDirectory(
+Directory? _getFirstDifferentDirectory(
   String workingDirectoryPath,
   List<String> oldPackageParts,
   List<String> newPackageParts,
