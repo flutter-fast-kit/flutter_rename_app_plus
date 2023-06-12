@@ -22,3 +22,9 @@
 
 * update dependencies
 * support UpperCase package name
+
+## [1.2.0] - 12/06/2023
+
+* add support Dart v3
+* remove Flutter from dependencies
+* update dependencies

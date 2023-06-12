@@ -42,19 +42,19 @@ Future<Config> getConfig() async {
     dartPackageName = settings[YamlArguments.dartPackageName];
   }
 
-  final String oldBundleId = await _loadBundleId() ?? "";
+  final String oldBundleId = await _loadBundleId();
   String newBundleId = oldBundleId;
   if (settings.containsKey(YamlArguments.bundleId)) {
     newBundleId = settings[YamlArguments.bundleId];
   }
 
-  final String oldApplicationId = await _loadAndroidApplicationId() ?? "";
+  final String oldApplicationId = await _loadAndroidApplicationId();
   String newApplicationId = oldApplicationId;
   if (settings.containsKey(YamlArguments.applicationId)) {
     newApplicationId = settings[YamlArguments.applicationId];
   }
 
-  final String oldAndroidPackageName = await _loadAndroidPackageName() ?? "";
+  final String oldAndroidPackageName = await _loadAndroidPackageName();
   String newAndroidPackageName = oldAndroidPackageName;
   if (settings.containsKey(YamlArguments.androidPackageName)) {
     newAndroidPackageName = settings[YamlArguments.androidPackageName];
@@ -139,11 +139,12 @@ Future<String> _loadBundleId() async {
   }
 }
 
-Future<String> searchInFile({String filePath, String pattern}) async {
+Future<String> searchInFile(
+    {required String filePath, required String pattern}) async {
   final File file = File(filePath);
   final String fileContent = file.readAsStringSync();
   final RegExp regExp = RegExp(pattern);
 
-  final RegExpMatch match = regExp.firstMatch(fileContent);
-  return match.group(1);
+  final RegExpMatch? match = regExp.firstMatch(fileContent);
+  return match?.group(1) ?? "";
 }
